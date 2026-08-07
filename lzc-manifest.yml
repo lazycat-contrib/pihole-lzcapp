@@ -16,6 +16,8 @@ application:
             password: "{{ .U.password }}"
             requireUser: false
             allowPasswordOnly: true
+            passwordSelector: "#current-password"
+            formSelector: "#loginform"
             autoSubmit: false
             retryCount: 20
             retryIntervalMs: 300
