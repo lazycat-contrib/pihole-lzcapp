@@ -5,6 +5,15 @@ application:
   upstreams:
     - location: /
       backend: http://pihole:80/
+  ingress:
+    - protocol: udp
+      publish_port: 1053
+      port: 53
+      service: pihole
+    - protocol: tcp
+      publish_port: 1053
+      port: 53
+      service: pihole
   injects:
     - id: pihole-password-autofill
       when:
@@ -40,4 +49,4 @@ services:
       interval: 30s
       retries: 3
 usage: |
-  Pi-hole is packaged as a web administration service. DNS and DHCP ports are intentionally not exposed because port 53 is reserved by the LazyCat system. Configure clients to use a separately reachable DNS endpoint if DNS filtering is required.
+  Open the application to administer Pi-hole. LazyCat reserves port 53, so DNS is exposed on TCP and UDP port 1053 instead. Configure DNS clients that support a custom port to use the LazyCat host address with port 1053. DHCP is not exposed.
