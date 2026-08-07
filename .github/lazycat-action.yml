@@ -24,7 +24,8 @@ images:
     service: pihole
     source: pihole/pihole
     channel: stable
-    tag_regex: '^(?P<version>(?P<year>\d{4})\.0?(?P<month>[1-9]\d*)\.(?P<patch>0|[1-9]\d*))$'
+    tag_regex: '^\d{4}\.\d{2}\.\d{1,2}$'
+    version_regex: '^(?P<version>(?P<year>\d{4})\.0?(?P<month>[1-9]\d*)\.(?P<patch>0|[1-9]\d*))$'
     version_template: '{year}.{month}.{patch}'
     delivery:
       mode: mirror
