@@ -1,0 +1,42 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/application.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: pihole
+
+build:
+  toolchains: []
+  run_buildscript: false
+
+images:
+  - id: pihole
+    target: service
+    service: pihole
+    source: pihole/pihole
+    channel: stable
+    tag_regex: '^(?P<version>(?P<year>\d{4})\.0?(?P<month>[1-9]\d*)\.(?P<patch>0|[1-9]\d*))$'
+    version_template: '{year}.{month}.{patch}'
+    delivery:
+      mode: mirror
+      image_template: docker.1ms.run/pihole/pihole:{tag}
+      require_digest_match: true
+
+stores:
+  official:
+    enabled: false
+    skip_if_version_exists: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Pi-hole
+    summary: "Automated Pi-hole image updates"

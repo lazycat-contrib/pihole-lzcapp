@@ -1,0 +1,28 @@
+params:
+  - id: password
+    type: secret
+    name: "Web Password"
+    description: "Password for the Pi-hole web administration interface"
+    default_value: "$random(len=20)"
+    optional: false
+  - id: timezone
+    type: string
+    name: "Timezone"
+    description: "IANA timezone name. Common values: Asia/Shanghai, Asia/Hong_Kong, Asia/Tokyo, Asia/Singapore, Europe/London, Europe/Berlin, America/New_York, America/Los_Angeles"
+    default_value: "Asia/Shanghai"
+    optional: false
+locales:
+  zh:
+    password:
+      name: "Web 管理密码"
+      description: "Pi-hole Web 管理界面的登录密码"
+    timezone:
+      name: "时区"
+      description: "使用 IANA 时区名称。常用值：Asia/Shanghai、Asia/Hong_Kong、Asia/Tokyo、Asia/Singapore、Europe/London、Europe/Berlin、America/New_York、America/Los_Angeles"
+  zh_CN:
+    password:
+      name: "Web 管理密码"
+      description: "Pi-hole Web 管理界面的登录密码"
+    timezone:
+      name: "时区"
+      description: "使用 IANA 时区名称。常用值：Asia/Shanghai、Asia/Hong_Kong、Asia/Tokyo、Asia/Singapore、Europe/London、Europe/Berlin、America/New_York、America/Los_Angeles"

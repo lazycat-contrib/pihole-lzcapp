@@ -1,0 +1,41 @@
+application:
+  subdomain: pihole
+  background_task: false
+  multi_instance: false
+  upstreams:
+    - location: /
+      backend: http://pihole:80/
+  injects:
+    - id: pihole-password-autofill
+      when:
+        - /login
+        - /login*
+      do:
+        - src: builtin://simple-inject-password
+          params:
+            password: "{{ .U.password }}"
+            requireUser: false
+            allowPasswordOnly: true
+            autoSubmit: false
+            retryCount: 20
+            retryIntervalMs: 300
+
+services:
+  pihole:
+    # docker.1ms.run/pihole/pihole:2026.07.2
+    image: docker.1ms.run/pihole/pihole:2026.07.2
+    binds:
+      - /lzcapp/var/etc-pihole:/etc/pihole
+    environment:
+      - TZ={{ .U.timezone }}
+      - FTLCONF_webserver_api_password={{ .U.password }}
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - curl -fsS http://localhost:80/admin/ >/dev/null || exit 1
+      start_period: 190s
+      timeout: 10s
+      interval: 30s
+      retries: 3
+usage: |
+  Pi-hole is packaged as a web administration service. DNS and DHCP ports are intentionally not exposed because port 53 is reserved by the LazyCat system. Configure clients to use a separately reachable DNS endpoint if DNS filtering is required.

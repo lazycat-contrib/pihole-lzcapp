@@ -1,0 +1,21 @@
+package: community.lazycat.app.pihole
+version: 2026.7.2
+name: Pi-hole
+description: Network-wide DNS sinkhole for blocking unwanted content.
+homepage: https://github.com/pi-hole/docker-pi-hole
+author: pi-hole
+license: EUPL-1.2
+min_os_version: 1.5.0
+locales:
+  zh:
+    name: Pi-hole
+    description: Pi-hole 是网络级 DNS 黑洞，无需在设备上安装客户端即可屏蔽不需要的内容。
+  zh_CN:
+    name: Pi-hole
+    description: Pi-hole 是网络级 DNS 黑洞，无需在设备上安装客户端即可屏蔽不需要的内容。
+  en:
+    name: Pi-hole
+    description: Network-wide DNS sinkhole that blocks unwanted content without client-side software.
+permissions:
+  required:
+    - net.internet
