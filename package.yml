@@ -1,5 +1,5 @@
 package: community.lazycat.app.pihole
-version: 2026.7.2
+version: 2026.9.0
 name: Pi-hole
 description: Network-wide DNS sinkhole for blocking unwanted content.
 homepage: https://github.com/pi-hole/docker-pi-hole

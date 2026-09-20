@@ -33,8 +33,8 @@ application:
 services:
   pihole:
     # docker.1ms.run/pihole/pihole:2026.07.2
-    # upstream: pihole/pihole:2026.07.2
-    image: docker.1ms.run/pihole/pihole:2026.07.2
+    # upstream: pihole/pihole:2026.09.0
+    image: docker.1ms.run/pihole/pihole:2026.09.0
     binds:
       - /lzcapp/var/etc-pihole:/etc/pihole
     environment:
